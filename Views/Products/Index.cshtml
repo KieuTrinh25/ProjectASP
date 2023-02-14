@@ -14,8 +14,6 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,7 +55,7 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
+                        <h6 class="mb-0">Xin chào @TempData["_user"]</h6>
                         <span>Admin</span>
                     </div>
                 </div>
@@ -149,7 +147,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                            <span class="d-none d-lg-inline-flex">@TempData["_user"]</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
@@ -164,7 +162,7 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <form class="input-group w-50 float-right" asp-action="Index" method="get">
-                        <input type="text" class="form-control" placeholder="Search for" name="search" />
+                        <input type="text" class="form-control" placeholder="Search for" name="search" value="@ViewData["Search"]"  />
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-outline-primary">Search</button>
                         </div>
@@ -220,11 +218,26 @@
                                                 <a asp-action="Details" asp-route-id="@item.id">Details</a> |
                                                 <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
                                             </td>
+                                           
+                                            <th></th>
                                         </tr>
                                     }
 
                                 </tbody>
+                               
                             </table>
+                            <tr>
+                                <td colsap="2">
+                                    @{
+                                        int pages = (int)ViewData["Pages"];
+                                        int p = (int)ViewData["Page"];
+                                    }
+                                    <form asp-action="Index" method="get">
+
+                                        <input type="submit" value="Go to" /> page <input type="number" max="@pages" min="1" value="@p" name="page" /> of @pages
+                                    </form>
+                                </td>
+                            </tr>
                         </div>
                     </div>
                 </div>

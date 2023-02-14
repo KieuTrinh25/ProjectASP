@@ -9,7 +9,7 @@ namespace ProjectASP.Models
         public int id { get; set; }
 
         [StringLength(60, MinimumLength = 3)]
-        [Required(ErrorMessage = "Yêu cầu nhập danh mục sản phẩm")]
+        [Required(ErrorMessage = "Yêu cầu nhập tên danh mục sản phẩm")]
         public string name { get; set; }
 
         [Required(ErrorMessage = "Yêu cầu nhập mô tả danh mục sản phẩm")]
