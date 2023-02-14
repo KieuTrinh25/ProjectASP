@@ -8,32 +8,39 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ProjectASP.Data;
 using ProjectASP.Models;
+using PagedList;
+using static System.Reflection.Metadata.BlobBuilder;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 namespace ProjectASP.Controllers
+
 {
     public class ProductsController : Controller
     {
         private IHostingEnvironment Environment;
         private readonly Context _context;
-
+         
         public ProductsController(Context context, IHostingEnvironment environment)
         {
             _context = context;
             Environment = environment;
         }
         
-        public async Task<IActionResult> Index(int? id = 0, string search = "")
+        public async Task<IActionResult> Index(int? id = 0, string search = "", int page = 1)
         {
-            var query = _context.products.Include(p => p.Category).ToList();
-            if (id != 0)
-            {
-                query = query.Where(x => x.categoryId == id).ToList();
-            }
-            if (!String.IsNullOrEmpty(search))
-            {
-                query = query.Where(p => p.name.ToLower().Contains(search.ToLower())).ToList();
-            }
-            return View(query);
+            
+            
+            var model = _context.Paging(page,search, id);
+            ViewData["Pages"] = model.pages;
+            ViewData["Page"] = model.page;
+            ViewData["Search"] = search;
+            return View(model.products);
+            //if (page == 1)
+            //{
+            //    ViewData["Pages"] = model.pages;
+            //    ViewData["Page"] = model.page;
+            //    return View(model.products);
+            //}
+            //return View(query);
         }
        
         // GET: Products/Details/5
@@ -192,5 +199,6 @@ namespace ProjectASP.Controllers
         {
           return _context.products.Any(e => e.id == id);
         }
+        
     }
 }

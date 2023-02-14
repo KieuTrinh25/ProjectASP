@@ -27,7 +27,6 @@ namespace ProjectASP.Models
         [ValidateNever]
         public Category? Category { get; set; }
 
-        [Required(ErrorMessage = "Yêu cầu nhập mô tả sản phẩm")] 
         public string? description { get; set; }
     }
 }

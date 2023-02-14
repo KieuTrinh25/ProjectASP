@@ -56,7 +56,7 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
+                        <h6 class="mb-0">Xin chào @TempData["_user"]</h6>
                         <span>Admin</span>
                     </div>
                 </div>
@@ -148,7 +148,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                            <span class="d-none d-lg-inline-flex">@TempData["_user"]</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
@@ -160,11 +160,13 @@
             </nav>
             <!-- Navbar End -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
+                <div class="row">
                     <div class="col-3 d-flex align-items-center justify-content-between">
                         <a asp-action="Index" class="btn btn-outline-info">Back to List</a>
                     </div>
-                    <div class="col-12 bg-secondary text-center rounded p-4">
+                </div>
+                <div class="row g-4">
+                    <div class="col-8 bg-secondary text-center rounded p-4">
                         <form asp-action="Edit" enctype="multipart/form-data">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-floating mb-3">
@@ -188,16 +190,19 @@
                                 <span asp-validation-for="description" class="text-danger"></span>
                             </div>
                             <div class=" mb-4">
-                                <input class="form-control bg-dark" type="file" asp-for="img" id="uploadImg">
+                                <input class="form-control bg-dark" type="file" asp-for="img" onchange="loadFile(event)">
                                 <span asp-validation-for="img" class="text-danger"></span>
                             </div>
                             <div class="form-floating mb-4">
                                 <select asp-for="categoryId" class="form-control bg-dark" asp-items="ViewBag.categoryId"></select>
                                 <label asp-for="categoryId" class="control-label"></label>
-                                 <span asp-validation-for="categoryId" class="text-danger"></span>
+                                <span asp-validation-for="categoryId" class="text-danger"></span>
                             </div>
-                            <input type="submit" value="Update" class="btn btn-outline-warning" id="toastrWarning" />
+                            <input type="submit" value="Create" class="btn btn-outline-success" id="toastrSuccess" />
                         </form>
+                    </div>
+                    <div class="col-4 bg-secondary text-center rounded p-4">
+                        <img id="output" style="height:250px; width:250px; " />
                     </div>
                 </div>
             </div>
@@ -226,6 +231,15 @@
     </script>
     <!-- Template Javascript -->
     <script src="~/js/main1.js"></script>
+    <script>
+        var loadFile = function (event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function () {
+                URL.revokeObjectURL(output.src) // free memory
+            }
+        };
+    </script>
 </body>
 
 </html>
