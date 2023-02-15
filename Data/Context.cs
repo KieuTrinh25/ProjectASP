@@ -10,6 +10,8 @@ namespace ProjectASP.Data
         public DbSet<Category> categories { get; set; }
         public DbSet<Product> products { get; set; }
         public DbSet<User> users { get; set; }
+        public DbSet<Order> orders { get; set; }
+        public DbSet<OrderDetail> orderDetails { get; set; }
         public (Product[] products, int pages, int page) Paging(int page, string? search, int? id)
         {
             int size = 3;
@@ -25,6 +27,6 @@ namespace ProjectASP.Data
             int pages = (int)Math.Ceiling((double)product.Count() / size);
             product = product.Skip((page - 1) * size).Take(size).ToArray();
             return (product, pages, page);
-        }
+        }  
     }
 }

@@ -18,7 +18,7 @@ namespace ProjectASP.Controllers
     {
         private IHostingEnvironment Environment;
         private readonly Context _context;
-         
+        
         public ProductsController(Context context, IHostingEnvironment environment)
         {
             _context = context;
@@ -76,6 +76,7 @@ namespace ProjectASP.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("id,name,quantity,price,img,categoryId")] Product product, IFormFile img)
         {
+            
             if (ModelState.IsValid)
             {
                 Upload(product, img);
@@ -90,7 +91,6 @@ namespace ProjectASP.Controllers
         {
             return $"wwwroot\\image\\{file}";
         }
-
         public void Upload(Product product, IFormFile img)
         {
             if (img != null)
