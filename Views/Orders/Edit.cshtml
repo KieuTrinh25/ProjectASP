@@ -1,0 +1,29 @@
+﻿@model ProjectASP.Models.Order
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Edit Order";
+}
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-3 d-flex align-items-center justify-content-between">
+            <a asp-action="Index" class="btn btn-outline-info">Back to List</a>
+        </div>
+        <div class="col-12 bg-secondary text-center rounded p-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-floating mb-3">
+                    <input asp-for="code" class="form-control" id="floatingInput" placeholder="code" />
+                    <label asp-for="code" class="control-label" for="floatingInput"></label>
+                    <span asp-validation-for="code" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="status" class="form-control" id="floatingInput" placeholder="status" />
+                    <label asp-for="status" class="control-label" for="floatingInput"></label>
+                    <span asp-validation-for="status" class="text-danger"></span>
+                </div>
+                <input type="submit" value="Update" class="btn btn-outline-warning" id="toastrWarning"/>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@model ProjectASP.Models.Order
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Create Order";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-3 d-flex align-items-center justify-content-between">
+            <a asp-action="Index" class="btn btn-outline-info">Back to List</a>
+        </div>
+        <div class="col-12 bg-secondary text-center rounded p-4">
+            <form asp-action="Create" >
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-floating mb-3">
+                    <input asp-for="code" class="form-control" id="floatingInput" placeholder="code" />
+                    <label asp-for="code" class="control-label" for="floatingInput"></label>
+                    <span asp-validation-for="code" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="status" class="form-control" id="floatingInput" placeholder="status" />
+                    <label asp-for="status" class="control-label" for="floatingInput"></label>
+                    <span asp-validation-for="status" class="text-danger"></span>
+                </div>
+                <input type="submit" value="Create" class="btn btn-outline-success" id="toastrSuccess"/>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function makeid(length) {
+        let result = '';
+        const characters = '0123456789';
+        const charactersLength = characters.length;
+        let counter = 0;
+        while (counter < length) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            counter += 1;
+        }
+        return result;
+    }
+
+    document.getElementById('floatingInput').value = makeid(10)
+</script>

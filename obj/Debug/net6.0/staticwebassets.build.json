@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/5kz7E33o038zfKtDrjS4qWRgFleiWUQYh1tZGoZtZA=",
+  "Hash": "UNV7eC9kTqjVLMq0X9OZmD61CVqL17JZ1vZ21AtVLLw=",
   "Source": "ProjectASP",
   "BasePath": "_content/ProjectASP",
   "Mode": "Default",
@@ -117,23 +117,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
-    },
-    {
-      "Identity": "C:\\Users\\PC\\source\\repos\\ProjectASP\\wwwroot\\image\\329101235_3335824356639247_9177163722324407779_n.jpg",
-      "SourceId": "ProjectASP",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PC\\source\\repos\\ProjectASP\\wwwroot\\",
-      "BasePath": "_content/ProjectASP",
-      "RelativePath": "image/329101235_3335824356639247_9177163722324407779_n.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\image\\329101235_3335824356639247_9177163722324407779_n.jpg"
     },
     {
       "Identity": "C:\\Users\\PC\\source\\repos\\ProjectASP\\wwwroot\\image\\nt.jpg",
