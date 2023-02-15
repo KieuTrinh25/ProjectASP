@@ -34,13 +34,7 @@ namespace ProjectASP.Controllers
             ViewData["Page"] = model.page;
             ViewData["Search"] = search;
             return View(model.products);
-            //if (page == 1)
-            //{
-            //    ViewData["Pages"] = model.pages;
-            //    ViewData["Page"] = model.page;
-            //    return View(model.products);
-            //}
-            //return View(query);
+            
         }
        
         // GET: Products/Details/5

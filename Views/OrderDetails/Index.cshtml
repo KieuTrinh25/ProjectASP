@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ProjectASP.Models.OrderDetail>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "OrderDetail Index";
+}
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12 bg-secondary text-center rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h6 class="mb-0">Category List</h6>
+                <a asp-action="Create">Create New</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.order)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.product)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.quantity)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model) {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.order.code)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.product.name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.quantity)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

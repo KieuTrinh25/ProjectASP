@@ -1,0 +1,35 @@
+﻿@model ProjectASP.Models.Order
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Details Order";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+            <div class="ms-3">
+                <div>
+                    <dl class="row">
+                        <dt class = "col-sm-2">
+                            @Html.DisplayNameFor(model => model.code)
+                        </dt>
+                        <dd class = "col-sm-10">
+                            @Html.DisplayFor(model => model.code)
+                        </dd>
+                        <dt class = "col-sm-2">
+                            @Html.DisplayNameFor(model => model.status)
+                        </dt>
+                        <dd class = "col-sm-10">
+                            @Html.DisplayFor(model => model.status)
+                        </dd>
+                     </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+<div>
+</div>
+    <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>   
